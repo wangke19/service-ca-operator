@@ -20,8 +20,6 @@ import (
 	oteginkgo "github.com/openshift-eng/openshift-tests-extension/pkg/ginkgo"
 	"github.com/openshift/service-ca-operator/pkg/version"
 
-	"k8s.io/klog/v2"
-
 	// Import test packages to register Ginkgo tests
 	_ "github.com/openshift/service-ca-operator/test/e2e"
 )
@@ -35,18 +33,13 @@ func main() {
 func newOperatorTestCommand(ctx context.Context) *cobra.Command {
 	registry, err := prepareOperatorTestsRegistry()
 	if err != nil {
-		klog.Fatal(err)
+		panic(fmt.Sprintf("couldn't prepare operator tests registry: %+v", err.Error()))
 	}
 
 	cmd := &cobra.Command{
 		Use:   "service-ca-operator-tests-ext",
 		Short: "A binary used to run service-ca-operator tests as part of OTE.",
-		Run: func(cmd *cobra.Command, args []string) {
-			// no-op, logic is provided by the OTE framework
-			if err := cmd.Help(); err != nil {
-				klog.Fatal(err)
-			}
-		},
+		Long:  "Service CA Operator Tests Extension",
 	}
 
 	if v := version.Get().String(); len(v) == 0 {
