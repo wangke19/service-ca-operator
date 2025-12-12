@@ -35,13 +35,11 @@ func getPodLogs(t *testing.T, client *kubernetes.Clientset, name, namespace stri
 	return buf.String(), nil
 }
 
-
 // newPrometheusClientForConfig returns a new prometheus client for
 // the provided kubeconfig.
 
 // checkMetricsCollection tests whether metrics are being successfully scraped from at
 // least one target in a namespace.
-
 
 func TestE2E(t *testing.T) {
 	// use /tmp/admin.conf (placed by ci-operator) or KUBECONFIG env
@@ -165,4 +163,3 @@ func TestE2E(t *testing.T) {
 		testValidatingWebhookCABundleInjection(t)
 	})
 }
-

@@ -166,7 +166,7 @@ func testServingCertSecretAddData(t testing.TB, headless bool) {
 func testServingCertSecretDeleteData(t testing.TB) {
 	serviceName := "metrics"
 	operatorNamespace := "openshift-service-ca-operator"
-	
+
 	adminClient, err := getKubeClient()
 	if err != nil {
 		t.Fatalf("error getting kube client: %v", err)
