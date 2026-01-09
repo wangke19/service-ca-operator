@@ -33,7 +33,7 @@ func init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
-var _ = g.Describe("[sig-service-ca] service-ca-operator", func() {
+var _ = g.Describe("[sig-service-ca][Operator][Serial] service-ca-operator", func() {
 	g.Context("serving-cert-annotation", func() {
 		for _, headless := range []bool{false, true} {
 			headless := headless // capture range variable
